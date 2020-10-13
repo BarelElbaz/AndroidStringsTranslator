@@ -2,10 +2,11 @@ from Input_Parser import *
 from Dependencies_Parser import *
 
 class Translator:
-    def __init__(self, input_path, dependencies_path):
+    def __init__(self, input_path, dependencies_path, output_handler):
 
         self.input_path = input_path
         self.dependencies_path = dependencies_path
+        self.output_handler = output_handler
 
     def prepareTranslation(self):
         self.input_parser = InputParser(self.input_path)
@@ -19,14 +20,19 @@ class Translator:
         input_elements = self.input_parser.elements_lst
         dependencies_elements = self.dependencies_parser.elements_lst
         for element in input_elements:
-            curr_translation = ""
-            for dep_element in dependencies_elements:
-                if dep_element.attrib['name'] == element.attrib['name']:
-                    curr_translation = str(dep_element.text)
-                    break
-            #if there is no any translation
-            if curr_translation == "":
-                curr_translation = str(element.text)
+            if "name" in element.attrib.keys:
+                element_name = element.attrib["name"]
+
+                for dep_element in dependencies_elements:
+                    if dep_element.attrib['name'] == element_name:
+                        element.text = str(dep_element.text)
+                        break
+
+                self.output_handler.append_element(element)
+            else:
+                self.output_handler.append_element(element)
+
+
 
 
 
