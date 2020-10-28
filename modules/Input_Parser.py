@@ -1,15 +1,15 @@
 from Xml_Parser import *
 
-input_tree = et.parse('strings.xml')
-inroot = input_tree.getroot()
-
-
-def main():
-    # for string_raw in inroot:
-    #     print(string_raw.text)
-    source_elements = []
-    for element in inroot:
-        print("Element name: " + element.attrib['name'] + " Element value: " + str(element.text))#represents the name attribute of each element
+# input_tree = et.parse('strings.xml')
+# inroot = input_tree.getroot()
+#
+#
+# def main():
+#     # for string_raw in inroot:
+#     #     print(string_raw.text)
+#     source_elements = []
+#     for element in inroot:
+#         print("Element name: " + element.attrib['name'] + " Element value: " + str(element.text))#represents the name attribute of each element
 
 
 
@@ -28,5 +28,4 @@ class InputParser(XmlParser):
 
 
 
-if(__name__ == "__main__"):
-    main()
+
