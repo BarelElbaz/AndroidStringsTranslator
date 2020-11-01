@@ -20,11 +20,11 @@ class Translator:
         input_elements = self.input_parser.elements_lst
         dependencies_elements = self.dependencies_parser.elements_lst
         for element in input_elements:
-            if element.tag == "string" and "name" in element.attrib.keys:
+            if element.tag == "string" and "name" in element.attrib.keys():
                 element_name = element.attrib["name"]
 
                 for dep_element in dependencies_elements:
-                    if "name" in dep_element.attrib.keys:
+                    if "name" in dep_element.attrib.keys():
                         if dep_element.attrib['name'] == element_name:
                             element.text = str(dep_element.text)
                             break

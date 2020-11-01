@@ -5,7 +5,7 @@ class DependenciesParser(XmlParser):
     def __init__(self, dependencies_paths):
 
         self.dependencies_paths = dependencies_paths
-
+        self.elements_lst = []
 
 
     def parse(self):

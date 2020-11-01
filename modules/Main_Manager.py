@@ -1,19 +1,5 @@
 import os
 
-def main():
-    manager = MainManager()
-
-    manager.init_directories()
-
-    lst = manager.get_all_xmls_from_dir("Dependencies")
-    print (lst)
-
-
-
-
-
-
-
 class MainManager:
     def __init__(self):
         self.source_dir = "Source"
@@ -42,17 +28,15 @@ class MainManager:
 
         return xml_files
 
-    def check_for_default_source(self):
+    def is_default_source_exists(self):
         default_src_path = os.path.join(self.source_dir, self.default_src)
         if os.path.exists(default_src_path):
             return True
         else:
             return False
 
-    def get_dependencies(self):
+    def list_dependencies(self):
         return self.get_all_xmls_from_dir(self.dependencies_dir)
 
-
-
-if __name__ == "__main__":
-    main()
+    def list_source(self):
+        return self.get_all_xmls_from_dir(self.source_dir)

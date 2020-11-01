@@ -20,7 +20,7 @@ class OutputHandler:
 
     def write_to_disk(self):
         tree = et.ElementTree(self.xml_root)
-        tree.write(self.output_file_name)
+        tree.write(self.output_file_name, encoding="UTF-8")
 
 
 
